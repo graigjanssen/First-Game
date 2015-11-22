@@ -1,3 +1,102 @@
 body {
   background-color: rgb(230, 229, 201);
+  font-family: sans-serif;
+  width: 90%;
+  margin: 0 auto;
+}
+
+header {
+  background-color: rgb(181, 201, 208);
+  padding-top: 1px;
+  padding-bottom: 15px;
+  margin-top: 20px;
+  border: 3px solid rgb(58, 64, 74);
+}
+
+header h1, h3{
+  text-align: center;
+}
+
+header ul {
+  width: 70%;
+  margin: 0 auto;
+}
+
+#start-buttons {
+  width: 65%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.start-button {
+  margin: 5px 30px;
+  padding: 10px 15px;
+  font-size: 40px;
+  color: rgb(224, 224, 224);
+  border: 0px;
+  border-radius: 6%;
+  box-shadow: 2px 2px 4px 2px rgb(74, 74, 73);
+}
+
+#easy {
+  background-color: rgb(12, 91, 5);
+}
+
+#med {
+  background-color: rgb(159, 158, 6);
+}
+
+#hard {
+  background-color: rgb(128, 14, 14);
+}
+
+#board-area {
+  float: left;
+  margin-left: 10%;
+}
+
+#time-display {
+  text-align: center;
+  font-size: 42px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+table {
+  border: 10px solid rgb(20, 27, 75);
+  border-radius: 7.5%;
+  background-color: rgb(20, 27, 75);
+  margin-top: 35px;
+}
+.cell {
+  font-size: 46px;
+  font-weight: bold;
+  padding: 15px;
+  background-color: rgb(219, 228, 245);
+  border: 7px solid rgb(20, 27, 75);
+  border-radius: 7.5%;
+}
+
+#word-input {
+  font-size: 36px;
+  width: 50%;
+  margin: 25px 25%;
+  padding: 3px;
+}
+#result-area {
+  margin-left: 55%;
+}
+
+#score-display {
+  text-align: center;
+  font-size: 42px;
+  font-weight: bold;
+  margin: 40px 0;
+}
+#word-list {
+  width: 90%;
+  margin: 10px auto;
+  height: 500px;
+  background-color: rgb(224, 233, 250);
+  border: 5px solid rgb(20, 27, 75);
 }
