@@ -20,6 +20,8 @@ var dice = [
 ]
 
 var diceDisplayed = [];
+var cellArray = [];
+var score = 0;
 
 
 $('.start-button').on('click', playBoggle);
@@ -53,21 +55,56 @@ function makeWord() {
     $activeCell.css({
       "background-color": "rgb(244, 236, 164)"
     });
+    cellArray.push($activeCell.attr('id'));
     $('#word-input').append($(this).text());
+    console.log(cellArray);
+    if (cellArray.length > 1) {
+      checkAdjacency();
+    }
   })
 }
 
-var score = 0;
+function resetBoard() {
+  $('#word-input').text("");
+  cellArray = [];
+  $('.cell').css({
+    "background-color": "rgb(219, 228, 245)"
+  });
+}
+
+function checkAdjacency() {
+  var current = cellArray[cellArray.length - 1];
+  var prev = cellArray[cellArray.length - 2];
+  var adjacent = true;
+
+  if (current.charAt(0) === "a" && (prev.charAt(0) === "c" || prev.charAt(0) === "d")) {
+    adjacent = false;
+  } else if (current.charAt(0) === "b" && prev.charAt(0) === "d") {
+    adjacent = false;
+  } else if (current.charAt(0) === "c" && prev.charAt(0) === "a") {
+      adjacent = false;
+  } else if (current.charAt(0) === "d" && (prev.charAt(0) === "a" || prev.charAt(0) === "b")) {
+    adjacent = false;
+  } else if (current.charAt(1) == "1" && (prev.charAt(1) == "3" || prev.charAt(1) == "4")) {
+    adjacent = false;
+  } else if (current.charAt(1) == "2" && prev.charAt(1) == "4") {
+    adjacent = false;
+  } else if (current.charAt(1) == "3" && prev.charAt(1) == "1") {
+    adjacent = false;
+  } else if (current.charAt(1) == "4" && (prev.charAt(1) == "1" || prev.charAt(1) == "2")) {
+    adjacent = false;
+  }
+  if (adjacent === false) {
+    resetBoard();
+  }
+}
 
 function addToScoreAndList(points) {
   score += points;
   var $wordToSubmit = $('#word-input').text();
   $('#score-display').text("Score: " + score)
   $('#words').append($('<li>').text($wordToSubmit));
-  $('#word-input').text("");
-  $('.cell').css({
-    "background-color": "rgb(219, 228, 245)"
-  });
+  resetBoard();
 }
 
 function submitWord() {
