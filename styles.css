@@ -69,9 +69,9 @@ table {
   margin-top: 35px;
 }
 .cell {
-  font-size: 46px;
+  font-size: 52px;
   font-weight: bold;
-  padding: 15px;
+  padding: 10px 20px;
   background-color: rgb(219, 228, 245);
   border: 7px solid rgb(20, 27, 75);
   border-radius: 7.5%;
@@ -79,9 +79,13 @@ table {
 
 #word-input {
   font-size: 36px;
-  width: 50%;
-  margin: 25px 25%;
-  padding: 3px;
+  width: 65%;
+  height: 55px;
+  margin: 25px 15%;
+  padding-left: 15px;
+  padding-top: 10px;
+  background-color: rgb(224, 233, 250);
+  border: 5px solid rgb(20, 27, 75);
 }
 #result-area {
   margin-left: 55%;
@@ -99,4 +103,8 @@ table {
   height: 500px;
   background-color: rgb(224, 233, 250);
   border: 5px solid rgb(20, 27, 75);
+}
+
+#words {
+  list-style-type: none;
 }

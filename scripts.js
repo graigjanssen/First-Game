@@ -19,6 +19,17 @@ var dice = [
   ["D","E","I","L","R","X"]
 ]
 
+var diceDisplayed = [];
+
+
+$('.start-button').on('click', playBoggle);
+
+function playBoggle() {
+  setBoard();
+  makeWord();
+  submitWord();
+}
+
 function setTimer(limit) {
   // Sets timer depending on button clicked.
   // Displays countdown above board-area
@@ -27,17 +38,55 @@ function setTimer(limit) {
 
 function setBoard() {
   // generates random boggle board
+  for (var i = 0; i < dice.length; i++) {
+    diceDisplayed[i] = dice[i][(Math.floor(Math.random()*6))];
+  }
+  for (var i = 0; i < diceDisplayed.length; i++) {
+    $('.cell:eq(' + i + ')').text(diceDisplayed[i]);
+  }
 }
 
 function makeWord() {
-  // Listens for clicked cells
-  // Adds clicked letters to field below board
-  // Starts new word when non-adjacent square is clicked
+  $('#word-input').text("");
+  $('.cell').on('click', function(e){
+    var $activeCell = $(e.target);
+    $activeCell.css({
+      "background-color": "rgb(244, 236, 164)"
+    });
+    $('#word-input').append($(this).text());
+  })
+}
+
+var score = 0;
+
+function addToScoreAndList(points) {
+  score += points;
+  var $wordToSubmit = $('#word-input').text();
+  $('#score-display').text("Score: " + score)
+  $('#words').append($('<li>').text($wordToSubmit));
+  $('#word-input').text("");
+  $('.cell').css({
+    "background-color": "rgb(219, 228, 245)"
+  });
 }
 
 function submitWord() {
-  // Listens for ENTER key
-  // Calculates score of submitted word
-  // Adds score to score-display
-  // Adds word to word list
+    $(document).on('keypress', function(e){
+      if (e.keyCode == "13") {
+        var $wordToSubmit = $('#word-input').text();
+        if ($wordToSubmit.length < 3) {
+          $('#word-input').text("");
+        } else if ($wordToSubmit.length === 3 || $wordToSubmit.length === 4) {
+          addToScoreAndList(1);
+        } else if ($wordToSubmit.length === 5) {
+          addToScoreAndList(2);
+        } else if ($wordToSubmit.length === 6) {
+          addToScoreAndList(3);
+        } else if ($wordToSubmit.length === 7) {
+          addToScoreAndList(4)
+        } else if ($wordToSubmit.length > 7) {
+          addToScoreAndList(7)
+        }
+      }
+    })
 }
