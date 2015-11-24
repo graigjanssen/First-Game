@@ -24,18 +24,35 @@ var cellArray = [];
 var score = 0;
 
 
-$('.start-button').on('click', playBoggle);
+$(".start-button").on('click', playBoggle);
+
 
 function playBoggle() {
+  setTimer(180);
   setBoard();
   makeWord();
   submitWord();
 }
 
 function setTimer(limit) {
-  // Sets timer depending on button clicked.
-  // Displays countdown above board-area
-  // Stops gameplay when time runs out
+  var timeRemaining = limit;
+  var minutes;
+  var seconds;
+  var countdown = setInterval(function(){
+    timeRemaining -= 1;
+    minutes = Math.floor(timeRemaining / 60);
+    seconds = Math.floor(timeRemaining % 60);
+    if (seconds < 10) {
+      $('#time-display').text("Time: " + minutes + ":0" + seconds);
+    } else {
+      $('#time-display').text("Time: " + minutes + ":" + seconds);
+    }
+    if (timeRemaining === 0) {
+      clearInterval(countdown);
+      $('.cell').off();
+      $('#time-display').text("Time Up!");
+    }
+  }, 1000)
 }
 
 function setBoard() {
@@ -57,7 +74,6 @@ function makeWord() {
     });
     cellArray.push($activeCell.attr('id'));
     $('#word-input').append($(this).text());
-    console.log(cellArray);
     if (cellArray.length > 1) {
       checkAdjacency();
     }
