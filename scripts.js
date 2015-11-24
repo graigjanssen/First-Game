@@ -56,8 +56,13 @@ function setTimer(limit) {
   }, 1000)
 }
 
+function shuffle(o){
+    for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+}
+
 function setBoard() {
-  // generates random boggle board
+  shuffle(dice);
   for (var i = 0; i < dice.length; i++) {
     diceDisplayed[i] = dice[i][(Math.floor(Math.random()*6))];
   }

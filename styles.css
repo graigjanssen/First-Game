@@ -104,7 +104,8 @@ table {
   border: 5px solid rgb(20, 27, 75);
 }
 #result-area {
-  margin-left: 55%;
+  width: 33%;
+  margin: 0 15% 0 auto;
 }
 
 #score-display {
@@ -114,13 +115,21 @@ table {
   margin: 40px 0;
 }
 #word-list {
-  width: 90%;
+  width: 95%;
   margin: 10px auto;
-  height: 500px;
+  height: 600px;
   background-color: rgb(224, 233, 250);
   border: 5px solid rgb(20, 27, 75);
 }
 
 #words {
   list-style-type: none;
+}
+
+@media screen and (max-width: 1000px) {
+  #result-area {
+    width: 90%;
+    margin 0 auto;
+    clear: left;
+  }
 }
