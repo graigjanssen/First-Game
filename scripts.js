@@ -51,6 +51,7 @@ function setTimer(limit) {
       clearInterval(countdown);
       $('.cell').off();
       $('#time-display').text("Time Up!");
+      giveMedal();
     }
   }, 1000)
 }
@@ -142,4 +143,29 @@ function submitWord() {
         }
       }
     })
+}
+
+function giveMedal() {
+  if (score > 14 && score < 20) {
+    var $bronze = $('<div>');
+    $bronze.attr({
+      "class": "medal",
+      "id": "bronze"
+    });
+    $('#score-display').append($bronze);
+  } else if (score > 19 && score < 25) {
+    var $silver = $('<div>');
+    $silver.attr({
+      "class": "medal",
+      "id": "silver"
+    });
+    $('#score-display').append($silver);
+  } else if (score > 24) {
+    var $gold = $('<div>');
+    $gold.attr({
+      "class": "medal",
+      "id": "gold"
+    });
+    $('#score-display').append($gold);
+  }
 }

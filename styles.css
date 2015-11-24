@@ -22,14 +22,37 @@ header ul {
   margin: 0 auto;
 }
 
+#message {
+  float: right;
+}
+
+.medal {
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 125px;
+  width: 125px;
+  margin: 20px 40%;
+}
+#gold {
+  background-image: url("images/gold-medal.png");
+}
+
+#silver {
+  background-image: url("images/silver-medal.png")
+
+}
+
+#bronze {
+  background-image: url("images/bronze-medal.png")
+}
+
 #start-buttons {
-  width: 65%;
-  margin: 20px auto;
+  width: 25%;
+  margin: 40px auto 20px auto;
   text-align: center;
 }
 
 .start-button {
-  margin: 5px 30px;
   padding: 10px 15px;
   font-size: 40px;
   color: rgb(224, 224, 224);
