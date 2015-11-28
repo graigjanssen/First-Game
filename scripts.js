@@ -50,8 +50,11 @@ function setTimer(limit) {
     if (timeRemaining === 0) {
       clearInterval(countdown);
       $('.cell').off();
+      $('.start-button').off();
       $('#time-display').text("Time Up!");
       giveMedal();
+      $('.start-button').text("Play Again");
+      $('.start-button').on('click', playAgain);
     }
   }, 1000)
 }
@@ -117,6 +120,7 @@ function checkAdjacency() {
     adjacent = false;
   }
   if (adjacent === false) {
+    alert("Letters must be adjacent, please try again.");
     resetBoard();
   }
 }
@@ -134,7 +138,7 @@ function submitWord() {
       if (e.keyCode == "13") {
         var $wordToSubmit = $('#word-input').text();
         if ($wordToSubmit.length < 3) {
-          $('#word-input').text("");
+          resetBoard();
         } else if ($wordToSubmit.length === 3 || $wordToSubmit.length === 4) {
           addToScoreAndList(1);
         } else if ($wordToSubmit.length === 5) {
@@ -173,4 +177,9 @@ function giveMedal() {
     });
     $('#score-display').append($gold);
   }
+}
+
+function playAgain() {
+  location.reload();
+  playBoggle();
 }
